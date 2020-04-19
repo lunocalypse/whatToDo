@@ -30,7 +30,6 @@
     } else {
         echo "Nie udało się nawiązać połączenia z bazą danych!";
     }
-    $_POST = array();
     ?>
     
 </body>

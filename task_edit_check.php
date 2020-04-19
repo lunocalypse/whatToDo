@@ -15,21 +15,25 @@
         header("Location: logowanie.php");
     }
     ?>
-    <!-- STRONA Główna -->
-    <h1>Edytuj zadanie!</h1>
-    
     <?php
-    echo "Witaj, ".$_SESSION['login']."!";
+    $taskEdit = $_POST['taskEdit'];
+    $taskDeadline = $_POST['taskDeadline'];
+    $id = $_POST['toEdit'];
+    $link = new mysqli('localhost', 'user', 'zaq12wsx', 'whattodo');
+    if($link){
+        $sql = "UPDATE `tasks` SET `task` = '".$taskEdit."', `deadline` = '".$taskDeadline."' WHERE id='".$id."'";
+        $wynik = $link -> query($sql);
+        $link -> close();
+        if($wynik){
+            echo "Edytowano zadanie!";
+            header('Location: aplikacja.php');
+        } else {
+            echo "Nie udało się usunąć zadania!";
+        }
+    } else {
+        echo "Nie udało się nawiązać połączenia z bazą danych!";
+    }
     ?>
-    <!-- Formularz edytowania zadania -->
-    <form action="task_edit_send_check.php" method="POST">
-        <br>
-        <label for="task">Zadanie: </label>
-        <input id="task" name="task" type="text" required><br><br>
-        <label for="deadline">Hasło: </label>
-        <input id="deadline" name="deadline" type="date" required><br><br>
-        <input id="send" type="submit" value="Dodaj">
-    </form>
     
     <br>
     <button><a href="aplikacja.php">Strona główna</a></button>

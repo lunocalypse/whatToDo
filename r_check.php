@@ -23,7 +23,6 @@
     } else {
         echo "Nie udało się nawiązać połączenia z bazą danych!";
     }
-    $_POST = array();
     ?>
     <br>
     <a href="logowanie.php">Logowanie</a>

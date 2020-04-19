@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Ta część kodu odpowiada za dodanie zadania do bazy danych -->
     <?php
     $task = $_POST['task'];
     $deadline = $_POST['deadline'];
@@ -27,7 +28,6 @@
     } else {
         echo "Nie udało się nawiązać połączenia z bazą danych!";
     }
-    $_POST = array();
     ?>
     <br>
     <button><a href="dodawanie.php">Dodaj ponownie</a></button>

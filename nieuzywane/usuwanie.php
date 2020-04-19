@@ -21,6 +21,10 @@
     <?php
     echo "Witaj, ".$_SESSION['login']."!";
     ?>
+
+    <!-- PRZYCISK WYLOGOWANIA -->
+    <button><a href="wylogowanie.php">Wyloguj</a></button>
+    
     <br><br>
 
 <?php

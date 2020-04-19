@@ -10,8 +10,10 @@
 </head>
 
 <body>
+    <!-- Ta część kodu odpowiada za usunięcie zadania z bazy danych -->
     <?php
-    $toDelete = $_POST['toDelete'];
+    //$toDelete = $_POST['toDelete']; --> ta zmienna pochodzi ze starej metody usuwania
+    $toDelete = $_POST['id'];
     $login = $_SESSION['login'];
     $link = new mysqli('localhost', 'user', 'zaq12wsx', 'whattodo');
     if($link){
@@ -20,16 +22,15 @@
         $link -> close();
         if($wynik){
             echo "Usunięto zadanie!";
+            header('Location: aplikacja.php');
         } else {
             echo "Nie udało się usunąć zadania!";
         }
     } else {
         echo "Nie udało się nawiązać połączenia z bazą danych!";
     }
-    $_POST = array();
     ?>
     <br>
-    <button><a href="usuwanie.php">Usuń ponownie</a></button>
     <button><a href="aplikacja.php">Strona główna</a></button>
 </body>
 

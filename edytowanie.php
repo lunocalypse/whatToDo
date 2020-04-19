@@ -19,58 +19,35 @@
     <h1>Edytuj zadanie!</h1>
     
     <?php
-    echo "Witaj, ".$_SESSION['login']."!";
+    echo "Użytkownik: ".$_SESSION['login'];
     ?>
     <br><br>
+    <!-- Formularz edytowania zadania -->
 
 <?php
-        $link = new mysqli('localhost', 'user', 'zaq12wsx', 'whattodo');
-        if($link):
-            $sql = "SELECT * FROM `tasks` WHERE login='".$_SESSION['login']."'";
-            $wynik = $link -> query($sql);
-            $link -> close();
-            if($wynik):
-            ?>
-            <form action="edytowanie.php" method="POST">
-            <select name="toEdit">
+    $link = new mysqli('localhost', 'user', 'zaq12wsx', 'whattodo');
+    $toEdit = $_POST['id'];
+    if($link):
+        $sql = "SELECT * FROM `tasks` WHERE id='".$toEdit."'";
+        $wynik = $link -> query($sql);
+        $link -> close();
+        if($wynik):
+        ?>
+            <form action="task_edit_check.php" method="POST">
             <?php
             while($rekord = $wynik -> fetch_object()):
             ?>
-                <option><?php echo $rekord -> task ?></option>
-            <?php endwhile; ?>
-            </select>
-            <input name="edit" id="edit" value="Edytuj" type="submit">
-            </form>
-            <?php
-            else:
-                echo "Brak zadań!";
-            endif;
+                <input type="hidden" name="toEdit" value="<?php echo $toEdit ?>">
+                <label for="taskEdit">Zadanie: </label>
+                <input id="taskEdit" type="text" name="taskEdit" value="<?php echo $rekord -> task ?>"><br><br>
+                <label for="taskDeadline">Data ukończenia: </label>
+                <input id="taskDeadline" type="date" name="taskDeadline" value="<?php echo $rekord -> deadline ?>"><br><br>
+                <input type="submit" value="Edytuj">
             
-        else:
-            echo "Nie udało się nawiązać połączenia z bazą danych!";
-        endif; ?>
-    
-    
-        <form action="task_edit_check.php" method="POST">
-        <br>
-        <label for="task">Zadanie: </label>
-        <input id="task" name="task" type="text" required><br><br>
-        <label for="deadline">Data: </label>
-        <input id="deadline" name="deadline" type="date" required><br><br>
-        <input type="submit" name="send" value="Zmień">
-        </form>
-
-<br><br>
-
-<button><a href="aplikacja.php">Strona główna</a></button>
-
-
-<script type="text/javascript">
-document.getElementById("edit").addEventListener('click', function () {
-    var text = document.getElementById('task');
-    text.value = '<?php echo $rekord -> task ?>';
-});
-</script>
+            <?php endwhile; ?>
+            </form>
+        <?php endif; ?>
+    <?php endif; ?>
 
 </body>
 

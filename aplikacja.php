@@ -17,8 +17,12 @@
     if(empty($_SESSION['login'])){
         header("Location: logowanie.php");
     }
-    echo "Witaj, ".$_SESSION['login']."!";
+    echo "Użytkownik: ".$_SESSION['login'];
     ?>
+
+    <!-- PRZYCISK WYLOGOWANIA -->
+    <button><a href="wylogowanie.php">Wyloguj</a></button>
+
     <h3>Twoje zadania</h3>
 
     <?php
@@ -33,6 +37,8 @@
                 <tr>
                     <th>Zadania</th>
                     <th>Termin ukończenia</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             <?php
             while($rekord = $wynik -> fetch_object()):
@@ -40,7 +46,16 @@
                 <tr>
                     <td><?php echo $rekord -> task ?></td>
                     <td><?php echo $rekord -> deadline ?></td>
+                    <td><form action="edytowanie.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $rekord -> id ?>">
+                        <input name="edit" type="submit" value="Edytuj">
+                    </form></td>
+                        <td><form action="task_del_check.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $rekord -> id ?>">
+                        <input name="edit" type="submit" value="Usuń">
+                    </form></td>
                 </tr>
+                
             <?php endwhile; ?>
             </table>
             <?php
@@ -52,13 +67,8 @@
             echo "Nie udało się nawiązać połączenia z bazą danych!";
         endif; ?>
 
-
         <br>
         <button><a href="dodawanie.php">Dodaj</a></button>
-        <button><a href="usuwanie.php">Usuń</a></button>
-        <button><a href="edytowanie.php">Edytuj</a></button>
-
-    
 
 </body>
 
