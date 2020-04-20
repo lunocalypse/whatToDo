@@ -1,6 +1,7 @@
 <?php
     session_start();
     include 'functions.php';
+    isLogged();
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,26 +9,44 @@
 <head>
     <meta charset="UTF-8">
     <title>WhatToDo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS od Bootstrapa -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 
 <body>
-<?php
-    isLogged();
-?>
-    <!-- STRONA Główna -->
-    <h1>Edytuj zadanie!</h1>
-    
-<?php
-    echo "Użytkownik: ".$_SESSION['login'];
-?>
-<br><br>
-<!-- Formularz edytowania zadania -->
-<?php
-    editForm();    
-?>
+<!-- STRONA EDYTOWANIA ZADANIA -->
+<div class="jumbotron text-center">
+    <h1>WhatToDo</h1>
+    <p>
+        <?php
+            echo "Użytkownik: <span class='text-primary'>".$_SESSION['login']."</span>";
+        ?>
+    </p>
+    <!-- PRZYCISK WYLOGOWANIA -->
+    <a href="logout.php"><button class="btn btn-primary">Wyloguj</button></a>
+</div>
+    <h3></h3>
 
-<br>
-<button><a href="aplikacja.php">Strona główna</a></button>
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <!-- Formularz edytowania zadania -->
+            <h3>Edytuj zadanie</h3>
+            <?php
+                editForm();
+            ?> 
+        </div>
+        <div class="col-sm-4">
+            <a href="aplikacja.php"><button class="container-fluid btn btn-secondary">Strona główna</button></a>
+        </div>
+    </div>
+</div>
 
 </body>
 

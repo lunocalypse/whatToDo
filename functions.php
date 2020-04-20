@@ -13,7 +13,7 @@ function aplication(){
         $link -> close();
         if($wynik):
         ?>
-        <table border="1">
+        <table class="table table-hover table-striped">
             <tr>
                 <th>Zadania</th>
                 <th>Termin ukończenia</th>
@@ -28,11 +28,11 @@ function aplication(){
                 <td><?php echo $rekord -> deadline ?></td>
                 <td><form action="edytowanie.php" method="POST">
                     <input type="hidden" name="id" value="<?php echo $rekord -> id ?>">
-                    <input name="edit" type="submit" value="Edytuj">
+                    <input class="btn btn-info" name="edit" type="submit" value="Edytuj">
                 </form></td>
                 <td><form action="task_del_check.php" method="POST">
                     <input type="hidden" name="id" value="<?php echo $rekord -> id ?>">
-                    <input name="edit" type="submit" value="Usuń">
+                    <input class="btn btn-danger" name="edit" type="submit" value="Usuń">
                 </form></td>
             </tr>
                 
@@ -61,13 +61,16 @@ function editForm(){
             <?php
             while($rekord = $wynik -> fetch_object()):
             ?>
+            <div class="form-group">
                 <input type="hidden" name="toEdit" value="<?php echo $toEdit ?>">
-                <label for="taskEdit">Zadanie: </label>
-                <input id="taskEdit" type="text" name="taskEdit" value="<?php echo $rekord -> task ?>"><br><br>
+                <label for="taskEdit">Zadanie: </label><br>
+                <textarea id="taskEdit" name="task" rows="2" required><?php echo $rekord -> task ?></textarea>
+            </div>
+            <div class="form-group">
                 <label for="taskDeadline">Data ukończenia: </label>
-                <input id="taskDeadline" type="date" name="taskDeadline" value="<?php echo $rekord -> deadline ?>"><br><br>
-                <input type="submit" value="Edytuj">
-            
+                <input id="taskDeadline" type="date" name="taskDeadline" value="<?php echo $rekord -> deadline ?>">
+            </div>
+            <input class="btn btn-success" type="submit" value="Edytuj">
             <?php endwhile; ?>
             </form>
         <?php endif;
@@ -83,9 +86,7 @@ function loginCheck(){
         $wynik = $link -> query($sql);
         $link -> close();
         if($wynik && mysqli_num_rows($wynik) == 1){
-
             header("Location: aplikacja.php");
-
         } else {
             echo "Nie udało się zalogować!";
             echo"<br><a href='logowanie.php'>Logowanie</a> <a href='rejestracja.php'>Rejestracja</a>";
