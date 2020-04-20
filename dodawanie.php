@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include 'functions.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,15 +12,13 @@
 
 <body>
 <?php
-    if(empty($_SESSION['login'])){
-        header("Location: logowanie.php");
-    }
-    ?>
+    isLogged();
+?>
     <!-- STRONA Główna -->
     <h1>Dodaj zadanie!</h1>
     
     <!-- PRZYCISK WYLOGOWANIA -->
-    <button><a href="wylogowanie.php">Wyloguj</a></button>
+    <button><a href="logout.php">Wyloguj</a></button>
 
     <?php
     echo "Użytkownik: ".$_SESSION['login'];
@@ -33,9 +32,8 @@
         <input id="deadline" name="deadline" type="date" required><br><br>
         <input id="send" type="submit" value="Dodaj">
     </form>
-    
-    <br>
-    <button><a href="aplikacja.php">Strona główna</a></button>
+<br>
+<button><a href="aplikacja.php">Strona główna</a></button>
 
 </body>
 
