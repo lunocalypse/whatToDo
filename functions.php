@@ -177,4 +177,49 @@ function editCheck(){
     }
 }
 
+// Wyświetlenie zadań, których data zakończenia jest dzisiaj
+function today(){
+    $link = new mysqli('localhost', 'user', 'zaq12wsx', 'whattodo');
+    $date = date("Y-m-d");
+    if($link):
+        $sql = "SELECT * FROM `tasks` WHERE login='".$_SESSION['login']."' AND deadline='".$date."'";
+        $wynik = $link -> query($sql);
+        $link -> close();
+        if($wynik):
+        ?>
+        <table class="table table-hover table-striped">
+            <tr>
+                <th>Zadania</th>
+                <th>Termin ukończenia</th>
+                <th></th>
+                <th></th>
+            </tr>
+        <?php
+        while($rekord = $wynik -> fetch_object()):
+        ?>
+            <tr>
+                <td><?php echo $rekord -> task ?></td>
+                <td><?php echo $rekord -> deadline ?></td>
+                <td><form action="edytowanie.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $rekord -> id ?>">
+                    <input class="btn btn-info" name="edit" type="submit" value="Edytuj">
+                </form></td>
+                <td><form action="task_del_check.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $rekord -> id ?>">
+                    <input class="btn btn-danger" name="edit" type="submit" value="Usuń">
+                </form></td>
+            </tr>
+                
+        <?php endwhile; ?>
+        </table>
+        <?php
+        else:
+            echo "Brak zadań!";
+        endif;
+            
+    else:
+        echo "Nie udało się nawiązać połączenia z bazą danych!";
+    endif;
+}
+
 ?>
