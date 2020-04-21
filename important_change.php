@@ -1,7 +1,6 @@
 <?php
     session_start();
     include 'functions.php';
-    isLogged();
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,34 +19,13 @@
 </head>
 
 <body>
-<!-- STRONA GŁÓWNA -->
-<div class="jumbotron text-center">
-    <h1>WhatToDo</h1>
-    <p>
-        <?php
-            echo "Użytkownik: <span class='text-primary'>".$_SESSION['login']."</span>";
-        ?>
-    </p>
-    <!-- PRZYCISK WYLOGOWANIA -->
-    <a href="logout.php"><button class="btn btn-primary">Wyloguj</button></a>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-9">
-            <h3 style="text-align: center;">Zadania na dziś</h3>
-            <?php
-                today();
-            ?>
-        </div>
-        <div class="col-sm-3">
-            <a href="dodawanie.php" ><button class="container-fluid btn btn-success mb-2">Dodaj nowe zadanie</button></a>
-            <a href="important.php"><button class="container-fluid btn btn-secondary mb-2">Ważne zadania</button></a>
-            <a href="aplikacja.php"><button class="container-fluid btn btn-secondary">Strona główna</button></a>
-        </div>
-    </div>
-</div>
-
+<?php
+    isLogged();
+    importantChange(); // Ta część kodu odpowiada za dodanie zadania do bazy danych
+?>
+<br>
+<a href="dodawanie.php"><button class="btn btn-success">Dodaj ponownie</button></a>
+<a href="aplikacja.php"><button class="btn btn-secondary">Strona główna</button></a>
 </body>
 
 </html>

@@ -24,7 +24,6 @@
     addCheck(); // Ta część kodu odpowiada za dodanie zadania do bazy danych
 ?>
 <br>
-<a href="dodawanie.php"><button class="btn btn-success">Dodaj ponownie</button></a>
 <a href="aplikacja.php"><button class="btn btn-secondary">Strona główna</button></a>
 </body>
 

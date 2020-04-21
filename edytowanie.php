@@ -35,14 +35,14 @@
 
     <div class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <!-- Formularz edytowania zadania -->
             <h3>Edytuj zadanie</h3>
             <?php
                 editForm();
             ?> 
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <a href="aplikacja.php"><button class="container-fluid btn btn-secondary">Strona główna</button></a>
         </div>
     </div>

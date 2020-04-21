@@ -23,7 +23,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <h1>Zarejestruj się!</h1>
             <!-- Formularz rejestracji -->
             <form action="r_check.php" method="POST">
@@ -38,7 +38,7 @@
                 <input class="btn btn-success" id="send" name="send" type="submit" value="Zarejestruj">
             </form>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <a href="aplikacja.php"><button class="container-fluid btn btn-secondary">Strona główna</button></a>
         </div>
     </div>

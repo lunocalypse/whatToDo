@@ -34,15 +34,16 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <h3 style="text-align: center;">Twoje zadania</h3>
             <?php
                 aplication();
             ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <a href="dodawanie.php"><button class="container-fluid btn btn-success mb-2">Dodaj nowe zadanie</button></a>
             <a href="today.php"><button class="container-fluid btn btn-secondary mb-2">Zadania na dziś</button></a>
+            <a href="important.php"><button class="container-fluid btn btn-secondary mb-2">Ważne zadania</button></a>
         </div>
     </div>
 </div>

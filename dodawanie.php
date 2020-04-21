@@ -35,7 +35,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <!-- Formularz dodawania zadania -->
             <h3>Dodaj zadanie</h3>
             <form action="task_add_check.php" method="POST">
@@ -47,10 +47,17 @@
                     <label for="deadline">Data ukończenia: </label>
                     <input id="deadline" name="deadline" type="date" required>
                 </div>
+                <div class="form-group">
+                    <label for="important">Ważne: </label>
+                    <select id="important" name="important" required>
+                        <option value="0">Nie</option>
+                        <option value="1">Tak</option>
+                    </select>
+                </div>
                 <input class="btn btn-success" id="send" type="submit" value="Dodaj">
             </form>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <a href="aplikacja.php"><button class="container-fluid btn btn-secondary">Strona główna</button></a>
         </div>
     </div>

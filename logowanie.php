@@ -22,7 +22,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <!-- Formularz logowania -->
             <h1>Logowanie</h1>
             <form action="l_check.php" method="POST">
@@ -37,7 +37,7 @@
                 <input class="btn btn-success" id="send" type="submit" value="Zaloguj">
             </form>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <h4>Nie masz konta? Zarejestruj się!</h4>
             <a href="rejestracja.php"><button class="container-fluid btn btn-secondary">Rejestracja</button></a>
         </div>
